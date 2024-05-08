@@ -30,6 +30,7 @@ function updateGitIgnore() {
   const ignorePath = ".gitignore";
   const configPath = argv.config || defaults.configFileName;
   const ignoreCompletePath = path.resolve(ignorePath);
+
   if (fs.existsSync(configPath)) {
     const ignoreContent = `\n#figma-export-config\n${configPath}`;
     const ignore = fs.existsSync(ignoreCompletePath)
@@ -79,11 +80,11 @@ async function getPromptData(list = promptsList) {
 
 function createOutputDirectory() {
   return new Promise((resolve) => {
-    const directory = path.resolve(config.fontSizeExportPath);
+    const directory = path.resolve(config.fontSizeExportDirectory);
     if (!fs.existsSync(directory)) {
-      console.log(`Directory ${config.fontSizeExportPath} does not exist`);
+      console.log(`Directory ${config.fontSizeExportDirectory} does not exist`);
       if (mkdirp.sync(directory)) {
-        console.log(`Created directory ${config.fontSizeExportPath}`);
+        console.log(`Created directory ${config.fontSizeExportDirectory}`);
         resolve();
       }
     } else {
