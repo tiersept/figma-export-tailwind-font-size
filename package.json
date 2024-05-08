@@ -1,0 +1,43 @@
+{
+  "name": "figma-export-tailwind-font-size",
+  "version": "0.0.1",
+  "description": "Script to generate a font size object for use in a tailwind config file.",
+  "bin": {
+    "export-font-size": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "npm version patch --force && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiersept/figma-export-tailwind-font-size.git"
+  },
+  "keywords": [
+    "cli",
+    "figma",
+    "figma-api",
+    "tailwind font size"
+  ],
+  "author": "Kevin Lobine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tiersept/figma-export-tailwind-font-size/issues"
+  },
+  "homepage": "https://github.com/tiersept/figma-export-tailwind-font-size#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^2.4.2",
+    "cliui": "^5.0.0",
+    "minimist": "^1.2.5",
+    "mkdirp": "^0.5.1",
+    "ora": "^3.4.0",
+    "prompts": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/mkdirp": "^2.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

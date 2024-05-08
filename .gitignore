@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+node_modules
+.env
+constants
+
+#figma-export-config
+figma-export-config.json
