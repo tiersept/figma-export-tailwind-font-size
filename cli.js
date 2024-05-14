@@ -200,12 +200,14 @@ function exportFontSize() {
         const name = child.name;
         const styles = child.style;
 
+        console.log(child.style);
+
         groupObj[`${name}-${groupKey}`] = [
           pxToRem(child.style.fontSize),
           {
             lineHeight: `${styles.lineHeightPercentFontSize}%`,
             letterSpacing: `${pxToEm(styles.letterSpacing)}em`,
-            fontWeight: styles.fontWeight,
+            fontWeight: `${styles.fontWeight}`,
           },
         ];
         return groupObj;
