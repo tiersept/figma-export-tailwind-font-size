@@ -11,6 +11,7 @@ const prompts = require("prompts");
 const promptsList = require("./src/prompts");
 const mkdirp = require("mkdirp");
 const pxToRem = require("./src/utils/pxToRem.js");
+const pxToEm = require("./src/utils/pxToEm.js");
 const argv = require("minimist")(process.argv.slice(2));
 
 let config = {};
@@ -203,7 +204,7 @@ function exportFontSize() {
           pxToRem(child.style.fontSize),
           {
             lineHeight: `${styles.lineHeightPercentFontSize}%`,
-            letterSpacing: `${styles.letterSpacing}px`,
+            letterSpacing: `${pxToEm(styles.letterSpacing)}em`,
             fontWeight: styles.fontWeight,
           },
         ];
