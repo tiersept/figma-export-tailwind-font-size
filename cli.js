@@ -204,7 +204,7 @@ function exportFontSize() {
           pxToRem(child.style.fontSize),
           {
             lineHeight: `${styles.lineHeightPercentFontSize}%`,
-            letterSpacing: `${pxToEm(styles.letterSpacing)}em`,
+            letterSpacing: pxToREm(styles.letterSpacing),
             fontWeight: `${styles.fontWeight}`,
           },
         ];
