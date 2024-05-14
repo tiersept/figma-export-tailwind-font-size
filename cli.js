@@ -200,8 +200,6 @@ function exportFontSize() {
         const name = child.name;
         const styles = child.style;
 
-        console.log(child.style);
-
         groupObj[`${name}-${groupKey}`] = [
           pxToRem(child.style.fontSize),
           {
