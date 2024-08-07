@@ -47,4 +47,34 @@ export const config = convict({
     default: true,
     arg: "typescript",
   },
+
+  // Colors pacakge optional
+  colorsPage: {
+    doc: "The name of the Figma page containing colors",
+    format: String,
+    default: null,
+    nullable: true,
+    arg: "colorsPage",
+  },
+  colorsFrame: {
+    doc: "The frame name containing the colors",
+    format: String,
+    default: null,
+    nullable: true,
+    arg: "colorsFrame",
+  },
+  colorsExportDirectory: {
+    doc: "The path where the exported colors should be saved",
+    format: String,
+    default: "./constants",
+    nullable: true,
+    arg: "colorsExportDirectory",
+  },
+  colorsExportFileName: {
+    doc: "The file name where the exported colors should be saved",
+    format: String,
+    default: "colors",
+    nullable: true,
+    arg: "colorsExportFileName",
+  },
 });
