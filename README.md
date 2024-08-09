@@ -155,3 +155,6 @@ const config: Config = {
   },
 };
 ```
+
+---
+*This package was developed as a tool to improve the DX at [Bravoure](https://bravoure.nl/en)*
