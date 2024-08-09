@@ -26,7 +26,7 @@ export const config = convict({
     doc: "The frame name(s) in Figma page.",
     format: Array,
     default: null,
-    nullable: true,
+    nullable: false,
     arg: "fontSizeFrames",
   },
   fontSizeExportDirectory: {
@@ -50,14 +50,16 @@ export const config = convict({
 
   // Colors pacakge optional
   colorsPage: {
-    doc: "The name of the Figma page containing colors",
+    doc: "The name of the Figma page to export from",
     format: String,
     default: null,
     nullable: true,
     arg: "colorsPage",
   },
   colorsFrame: {
-    doc: "The frame name containing the colors",
+    doc:
+      "The frame name in Figma page. " +
+      "If is nested frame, could be referenced by slashes as path (/parentFrame/firstChildFrame/colorsChildFrame)",
     format: String,
     default: null,
     nullable: true,
