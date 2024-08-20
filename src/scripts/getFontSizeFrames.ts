@@ -1,47 +1,52 @@
-import { RunnerFn } from "../types/runnerFn";
-import { config } from "../config";
-import { getNodeByPath } from "../utils";
-import { BuilderConfig } from "../types/builderConfig";
-import * as _ from "lodash";
-import { Node, TEXT } from "figma-api/lib/ast-types";
-import * as ora from "ora";
-import { isParentalNode } from "../types/parentalNode";
-import { FontSizeResult } from "../types/fontSizeResult";
+import { RunnerFn } from '../types/runnerFn';
+import { config } from '../config';
+import { getNodeByPath } from '../utils';
+import { BuilderConfig } from '../types/builderConfig';
+import * as _ from 'lodash';
+import { Node, TEXT } from 'figma-api/lib/ast-types';
+import * as ora from 'ora';
+import { isParentalNode } from '../types/parentalNode';
+import { FontSizeResult } from '../types/fontSizeResult';
 
 const pxToRem = (px: string | number, base: number = 16): string => {
   let tempPx: string | number = px;
 
-  if (typeof px === "string") {
-    tempPx = px.replace("px", "");
+  if (typeof px === 'string') {
+    tempPx = px.replace('px', '');
   }
 
   tempPx = parseInt(tempPx as string, 10);
 
-  return (1 / base) * tempPx + "rem";
+  return (1 / base) * tempPx + 'rem';
 };
 
 export const getFontSizeFrames: RunnerFn = async (spinner, configuration) =>
   new Promise<BuilderConfig>(async (resolve, reject) => {
-    const fontSizeFrames = config.get("fontSizeFrames");
+    const fontSizeFrames = config.get('fontSizeFrames');
 
-    const paletteNodes: Node[] = fontSizeFrames.map((frame: string) =>
-      getNodeByPath(configuration.page, [frame])
-    );
-
-    if (
-      fontSizeFrames &&
-      fontSizeFrames.length < 1 &&
-      _.isEmpty(paletteNodes)
-    ) {
-      reject(
-        `Could not find frames "${fontSizeFrames}" in page ${config.get(
-          "fontSizeFrames"
-        )}`
-      );
+    if (fontSizeFrames && fontSizeFrames.length < 1) {
+      reject(`Could not find frames`);
 
       return;
     }
-    spinner.succeed("Font sizes found");
+
+    const paletteNodes: Node[] = fontSizeFrames.map(
+      (frame: string, index: number) => {
+        const node = getNodeByPath(configuration.page, [frame]);
+
+        if (!node) {
+          reject(
+            `Could not find frame "${frame}" in page "${config.get('fontSizePage')}"`
+          );
+
+          return;
+        }
+
+        return node;
+      }
+    );
+
+    spinner.succeed('Font sizes found');
 
     configuration.fontSizes = paletteNodes.reduce((finalObject, group) => {
       if (!isParentalNode(group)) return finalObject;

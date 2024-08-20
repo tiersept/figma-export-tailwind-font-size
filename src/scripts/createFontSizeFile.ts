@@ -1,9 +1,9 @@
-import { RunnerFn } from "../types/runnerFn";
-import { config } from "../config";
-import { BuilderConfig } from "../types/builderConfig";
-import * as ora from "ora";
-import * as path from "node:path";
-import * as fs from "fs";
+import { RunnerFn } from '../types/runnerFn';
+import { config } from '../config';
+import { BuilderConfig } from '../types/builderConfig';
+import * as ora from 'ora';
+import * as path from 'node:path';
+import * as fs from 'fs';
 
 export const createFontSizeFile: RunnerFn = async (
   spinner: ora.Ora,
@@ -11,10 +11,10 @@ export const createFontSizeFile: RunnerFn = async (
 ) =>
   new Promise<BuilderConfig>(async (resolve, reject) => {
     const directory = path.resolve(
-      config.get("fontSizeExportDirectory") as string
+      config.get('fontSizeExportDirectory') as string
     );
-    const filename = path.parse(config.get("fontSizeExportFileName") as string);
-    const extension = config.get("typescript") ? "ts" : "js";
+    const filename = path.parse(config.get('fontSizeExportFileName') as string);
+    const extension = config.get('typescript') ? 'ts' : 'js';
 
     if (
       !fs.existsSync(directory) &&
@@ -25,12 +25,12 @@ export const createFontSizeFile: RunnerFn = async (
 
     const fullPath = path.resolve(directory, `${filename.base}.${extension}`);
     const template = {
-      ts: "export const fontSize = #FONTSIZE;\n",
-      js: "module.exports.fontSize = #FONTSIZE;\n",
+      ts: 'export const fontSize = #FONTSIZE;\n',
+      js: 'module.exports.fontSize = #FONTSIZE;\n',
     };
 
     const content = template[extension].replace(
-      "#FONTSIZE",
+      '#FONTSIZE',
       JSON.stringify(configuration.fontSizes, null, 2)
     );
 

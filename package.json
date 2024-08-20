@@ -1,6 +1,6 @@
 {
   "name": "figma-export-tailwind-font-size",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Script to generate a font size object for use in a tailwind config file.",
   "bin": {
     "export-font-size": "./dist/cli.js"

@@ -31,17 +31,17 @@ Create a `figma-export-config.json` file in the root directory with the followin
 
 ```json5
 {
-  figmaPersonalToken: "YOUR_PERSONAL_TOKEN",
+  "figmaPersonalToken": "YOUR_PERSONAL_TOKEN",
   // File id can be found in the url of the figma file
   // E.g https://www.figma.com/design/[FILE_ID]/
-  fileId: "FILE_ID",
+  "fileId": "FILE_ID",
   // The page name
-  fontSizePage: "Typography",
+  "fontSizePage": "Typography",
   // Array of the frame names on the page where the font sizes are grouped by
-  fontSizeFrames: ["primary", "secondary-bold", "secondary-regular"],
-  fontSizeExportDirectory: "constants",
-  fontSizeExportFileName: "fontSize",
-  typescript: true,
+  "fontSizeFrames": ["primary", "secondary-bold", "secondary-regular"],
+  "fontSizeExportDirectory": "constants",
+  "fontSizeExportFileName": "fontSize",
+  "typescript": true,
 }
 ```
 
@@ -157,4 +157,5 @@ const config: Config = {
 ```
 
 ---
-*This package was developed as a tool to improve the DX at [Bravoure](https://bravoure.nl/en)*
+
+_This package was developed as a tool to improve the DX at [Bravoure](https://bravoure.nl/en)_
